@@ -1,5 +1,6 @@
 import React from 'react';
 import { useEffect } from 'react';
+import { Storage } from 'aws-amplify';
 
 const getAccount = async () => {
     const accounts = await window.ethereum.request({method: 'eth_requestAccounts'});
