@@ -1,4 +1,5 @@
 import React from 'react';
+import { useEffect } from 'react';
 
 const getAccount = async () => {
     const accounts = await window.ethereum.request({method: 'eth_requestAccounts'});
@@ -7,6 +8,20 @@ const getAccount = async () => {
 }
 
 const Formulario = ({accountAddress, setAccountAddress}) => {
+
+    React.state = {fileUrl: ''}
+    useEffect(() => {
+        Storage.get('heartbeat')
+        .then(data => {
+            this.setState({
+                fileUrl: data
+            })
+            console.log(data);
+        })
+        .catch(err => {
+            console.log('Error fetching data...', err);
+        })
+    });
 
     const connectWallet = async (event) => {
         event.preventDefault();
